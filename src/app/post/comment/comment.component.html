@@ -1,3 +1,13 @@
-<p>
-  comment works!
-</p>
+<app-comment-form [postId]="postId" (commentSubmit)="updateList($event)"></app-comment-form>
+<hr/>
+<div *ngFor="let comment of comments" class ="row">
+  <div class="col-xs-8">
+    {{comment.body}}
+  </div>
+  <div class = "col-xs-4">
+    <td> <a href="javascript:void(0);" (click) = "deleteComment(comment.id)">Delete</a>
+  </div>
+
+</div>
+
+<p *ngIf="!comments"> No Comments for this Post</p>

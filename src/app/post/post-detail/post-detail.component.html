@@ -1,9 +1,8 @@
-<h3 *ngIf="post1" >
-  {{post1.content}}
-  <p *ngFor="let comment of post1.comments">
-    {{comment.body}}
-  </p>
-</h2>
-<h5>Write Comment</h5>
-<app-comment-form></app-comment-form>
-<hr/>
+<a href="javascript:void(0);" (click)="navBack()">Home</a>
+<div *ngIf="post1">
+  <h3>
+    {{post1.content}}
+  </h3>
+  <h5>Write Comment</h5>
+  <app-comment [postId]="post1.id"></app-comment>
+</div>

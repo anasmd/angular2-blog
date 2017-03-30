@@ -13,6 +13,7 @@ import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { CommentFormComponent } from './post/comment-form/comment-form.component';
 import { CommentComponent } from './post/comment/comment.component';
+import { CommentService } from './post/comment/comment.service'
 
 const appRoutes: Routes = [
    { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule
   ],
-  providers: [PostService],
+  providers: [PostService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

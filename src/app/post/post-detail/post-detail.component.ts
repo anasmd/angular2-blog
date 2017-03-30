@@ -14,18 +14,24 @@ import { Router, ActivatedRoute} from '@angular/router';
 export class PostDetailComponent implements OnInit {
   post1: Post;
 
-  constructor(private postService: PostService, private route: ActivatedRoute) {}
+  constructor(private postService: PostService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    console.log("ppppp");
     this.getPost();
+    console.log("llllllll");
   }
 
-  getPostAndComments(){
+  getPost(){
     this.route.params.subscribe(params => {
       let id = +params["id"];
       this.postService.show(id)
       .subscribe(response => this.post1 = response.json());
     });
+  }
+
+  navBack(){
+    this.router.navigate(["/landing"]);
   }
 
 }

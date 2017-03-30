@@ -3,7 +3,7 @@ export class Post {
   id: number;
   content: string;
   create_at: string;
-  comment: Comment[];
+  
 
   constructor(content?: string){
     this.content = content;

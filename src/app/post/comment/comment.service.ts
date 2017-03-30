@@ -6,21 +6,22 @@ import { Comment } from "./comment";
 export class CommentService {
   serviceUrl = "https://dry-taiga-18497.herokuapp.com/posts";
   headers = new Headers({"Content-Type": "application/json"});
-  constructor(private http: Http) { }
-
-  getPosts(){
-    return this.http.get(this.serviceUrl);
+  constructor(private http: Http) {
   }
 
-  savePost(post:Post){
-    console.log(JSON.stringify(post));
-    return this.http.post(this.serviceUrl, post);
+  list(postId: number){
+    let url = this.serviceUrl +"/"+postId+"/comments";
+    return this.http.get(url);
   }
 
-  deletePost(id: number) {
-    let url = this.serviceUrl + "/" + id;
-    console.log(url);
-    return this.http.delete(url);
+  save(postId:number, comment: Comment){
+    let url = this.serviceUrl +"/" +postId+"/comments";
+    return this.http.post(url, comment);
+  }
+
+  delete(postId: number, id:number) {
+    let url = this.serviceUrl +"/" +postId+"/comments"+"/"+id;
+    return this.http.delete(url)
   }
 
 }
