@@ -1,0 +1,9 @@
+<h3 *ngIf="post1" >
+  {{post1.content}}
+  <p *ngFor="let comment of post1.comments">
+    {{comment.body}}
+  </p>
+</h2>
+<h5>Write Comment</h5>
+<app-comment-form></app-comment-form>
+<hr/>

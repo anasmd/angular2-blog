@@ -1,0 +1,6 @@
+<form class="form-inline" (ngSubmit)="onSubmit()" #postForm="ngForm">
+  <div class="form-group">
+    <textarea class="form-control" rows="3" cols="50" name="content" [(ngModel)]="post.content" #content="ngModel" maxlength="250" required placeholder="Type the text here." ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!postForm.valid">Post</button>
+</form>
