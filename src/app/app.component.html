@@ -1,8 +1,17 @@
 <div class="container">
-  <h1>
-    {{title}}
-  </h1>
+  <div class="row">
+    <div class="col-md-10">
+      <h1>
+        {{title}}
+      </h1>
+    </div>
+    <div *ngIf="showLogout" class="col-md-2">
+      <a (click)="logout($event)">Logout</a>
+    </div>
+  </div>
   <hr/>
+
   <router-outlet></router-outlet>
+  <!-- <user-app></user-app> -->
   <!-- <app-post></app-post> -->
 </div>

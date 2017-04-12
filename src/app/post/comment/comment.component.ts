@@ -18,7 +18,9 @@ export class CommentComponent implements OnInit {
     this.commentService.list(this.postId)
     .subscribe((response) =>{
       console.log(response.status);
+      console.log(response.json());
       this.comments = response.json();
+      console.log(this.comments.length);
     } );
   }
 

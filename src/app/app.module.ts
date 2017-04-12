@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,10 +14,14 @@ import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { CommentFormComponent } from './post/comment-form/comment-form.component';
 import { CommentComponent } from './post/comment/comment.component';
-import { CommentService } from './post/comment/comment.service'
+import { CommentService } from './post/comment/comment.service';
+import { UserComponent } from './user/user.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { UserService } from './user/user.service';
 
 const appRoutes: Routes = [
-   { path: '', redirectTo: 'landing', pathMatch: 'full' },
+   { path: '', component: UserComponent },
+   { path: "signup", component: SignupComponent},
    { path: 'landing', component: PostComponent },
   { path: "posts/:id", component: PostDetailComponent }
 ];
@@ -29,15 +34,18 @@ const appRoutes: Routes = [
     PostDetailComponent,
     PostDetailComponent,
     CommentFormComponent,
-    CommentComponent
+    CommentComponent,
+    UserComponent,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
-  providers: [PostService, CommentService],
+  providers: [PostService, CommentService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
