@@ -5,7 +5,7 @@ import { Http, Headers } from '@angular/http';
 @Injectable()
 export class UserService {
 
-  serviceUrl = "http://localhost:3003/"; //"https://dry-taiga-18497.herokuapp.com/"
+  serviceUrl = "https://dry-taiga-18497.herokuapp.com/";
   constructor(private http: Http) { }
 
   authenticate(email:string, password: string){

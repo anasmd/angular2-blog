@@ -4,7 +4,7 @@ import { Post } from "./post";
 
 @Injectable()
 export class PostService {
-  serviceUrl = "http://localhost:3003/posts"; //"https://dry-taiga-18497.herokuapp.com/posts"
+  serviceUrl = "https://dry-taiga-18497.herokuapp.com/posts";
 
   //headers = new Headers({"Content-Type": "application/json"});
   headers = new Headers({"Authorization": localStorage.getItem('token')});

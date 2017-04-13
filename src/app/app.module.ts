@@ -18,12 +18,13 @@ import { CommentService } from './post/comment/comment.service';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { UserService } from './user/user.service';
+import { AuthGuard } from "./auth-guard";
 
 const appRoutes: Routes = [
-   { path: '', component: UserComponent },
+   { path: "", component: UserComponent},
    { path: "signup", component: SignupComponent},
-   { path: 'landing', component: PostComponent },
-  { path: "posts/:id", component: PostDetailComponent }
+   { path: 'landing', component: PostComponent, canActivate: [AuthGuard] },
+  { path: "posts/:id", component: PostDetailComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [PostService, CommentService, UserService],
+  providers: [PostService, CommentService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

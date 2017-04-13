@@ -4,7 +4,7 @@ import { Comment } from "./comment";
 
 @Injectable()
 export class CommentService {
-  serviceUrl = "http://localhost:3003/posts"; //"https://dry-taiga-18497.herokuapp.com/posts"
+  serviceUrl = "https://dry-taiga-18497.herokuapp.com/posts";
   headers = new Headers({"Authorization": localStorage.getItem('token')});
   constructor(private http: Http) {
   }
