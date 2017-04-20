@@ -2,7 +2,8 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from "../user.service";
 import { Router } from "@angular/router";
-import { validateEmail } from "../validate-email"
+import { validateEmail } from "../validate-email";
+import { MessageService } from "../../message.service";
 
 import { User } from "../user";
 
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
   user: User;
   regForm: FormGroup;
   errors: Array<string> = [];
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router ) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private msg:MessageService ) {}
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -73,10 +74,10 @@ export class SignupComponent implements OnInit {
       this.user = new User(name.value, email.value, password.value);
       this.userService.create(this.user)
       .subscribe((response) => {
-        let token = response.json().token;
-        if(token) {
-          localStorage.setItem('token', response.json().token);
-          this.router.navigate(["/landing"])
+        let status = response.status;
+        if(status == 201 ) {
+          this.msg.push("Registered Successfully");
+          this.router.navigate(["/"])
         }
         else {
           this.errors.push("Invalid Email/Password combination.")

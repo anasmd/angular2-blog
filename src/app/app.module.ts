@@ -19,6 +19,7 @@ import { UserComponent } from './user/user.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { UserService } from './user/user.service';
 import { AuthGuard } from "./auth-guard";
+import { MessageService } from './message.service';
 
 const appRoutes: Routes = [
    { path: "", component: UserComponent},
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [PostService, CommentService, UserService, AuthGuard],
+  providers: [PostService, CommentService, UserService, AuthGuard, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -57,6 +57,7 @@ export class UserComponent implements OnInit {
       .subscribe((response) => {
         let token = response.json().token;
         if(token) {
+          this.userService.isLoginSubject.next(true);
           localStorage.setItem('token', response.json().token);
 
           console.log(token);
